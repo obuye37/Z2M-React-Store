@@ -1,0 +1,13 @@
+.authentication-page {
+    display: flex;
+    width: 900px;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.sign-up-container, .sign-in-container{
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+}
+

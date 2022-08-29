@@ -1,0 +1,6 @@
+export { default as Home }  from '../components/pages/home/Home'
+export  { default as Navigation } from './navigation/Navigation'
+export  { default as Shop }  from '../components/pages/shop/Shop'
+export { default as SignUp } from '../components/pages/authentication/SignUp'
+export { default as SignIn } from '../components/pages/authentication/SignIn'
+export { default as Authentication } from '../components/pages/authentication'

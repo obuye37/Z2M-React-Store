@@ -1,7 +1,8 @@
 import React from 'react'
 import CategoryItems from '../../categories/CategoryItems'
 import './home.scss'
-export const Home = () => {
+
+const Home = () => {
   return (
     <div>
         <CategoryItems />

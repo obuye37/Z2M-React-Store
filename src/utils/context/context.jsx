@@ -1,4 +1,6 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
+
+import { authStateChangedListerner, createUserDocFromAuth, } from '../firebase/firebase.utils'
 
 export const UserContext = createContext({
     currentUser: null,
@@ -6,6 +8,17 @@ export const UserContext = createContext({
 })
 
 export const UserProvider = ({children}) => {
+    useEffect(() => {
+    const unSubscribe = authStateChangedListerner( user => {
+        if(user) {
+            createUserDocFromAuth(user)
+        }
+        setCurrentUser(user)
+        console.log(user)
+    })
+      return unSubscribe
+    }, [])
+    
     const [ currentUser, setCurrentUser ] = useState(null)
     const value = {currentUser, setCurrentUser}
 return (

@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 
 import { 
   signInWithGooglePopup, 
@@ -7,7 +7,6 @@ import {
 } from '../../../utils/firebase/firebase.utils'
 import FormInput from '../../formInputs/formInputs'
 import Button from '../../button/button'
-import { UserContext } from '../../../utils/context/context'
 
 import './authentication.styles.scss'
 
@@ -23,8 +22,6 @@ const SignIn = () => {
     setFormField(formFields)
   }
 
-  const { setCurrentUser } = useContext(UserContext)
-
   const [ formField, setFormField ] = useState(formFields)
   const { email, password } = formField
 
@@ -37,8 +34,7 @@ const SignIn = () => {
   event.preventDefault();
   
     try {
-      const { user } = await SignInWithEmailAndPasswordAuth(email, password)
-      setCurrentUser(user)
+      SignInWithEmailAndPasswordAuth(email, password)
       resetFormFields()
     } catch (error) {
       console.log("Sign-In unsuccessful", error)
@@ -46,8 +42,7 @@ const SignIn = () => {
   }
 
   const logGoogleUser = async () => {
-    const { user } = await signInWithGooglePopup()
-    createUserDocFromAuth(user)
+    signInWithGooglePopup()
   }
 
   return (
@@ -72,7 +67,7 @@ const SignIn = () => {
           required />
           <div style={{display:'flex', justifyContent:'space-between'}}>
             <Button type='submit'>Sign In</Button>
-            <Button buttonType="google" onClick={logGoogleUser} >SignIn with Google</Button>
+            <Button type='button' buttonType="google" onClick={logGoogleUser} >SignIn with Google</Button>
           </div>
           
         

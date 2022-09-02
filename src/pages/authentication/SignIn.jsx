@@ -3,9 +3,9 @@ import { useState } from 'react'
 import { 
   signInWithGooglePopup, 
   SignInWithEmailAndPasswordAuth 
-} from '../../../utils/firebase/firebase.utils'
-import FormInput from '../../formInputs/formInputs'
-import Button from '../../button/button'
+} from '../../utils/firebase/firebase.utils'
+import FormInput from '../../components/formInputs/formInputs'
+import Button from '../../components/button/button'
 
 import './authentication.styles.scss'
 

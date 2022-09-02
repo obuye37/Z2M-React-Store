@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { CreateUserWithEmailAndPasswordAuth, createUserDocFromAuth } from '../../../utils/firebase/firebase.utils'
+import { CreateUserWithEmailAndPasswordAuth, createUserDocFromAuth } from '../../utils/firebase/firebase.utils'
 
-import FormInput from '../../formInputs/formInputs'
-import Button from '../../button/button'
+import FormInput from '../../components/formInputs/formInputs'
+import Button from '../../components/button/button'
 
 import './authentication.styles.scss'
 

@@ -9,7 +9,6 @@ import { ProductsProvider } from './utils/context/productsContext';
 import './index.scss';
 import { CartProvider } from './utils/context/cartContext';
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Router>

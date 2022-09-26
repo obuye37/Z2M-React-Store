@@ -1,14 +1,17 @@
 import React from 'react'
+import { Navigate, useNavigate } from 'react-router-dom'
 import Categories from  './categories'
 import './categories.styles.scss'
 import Button from '../button/button'
 
 const CategoryItems = () => {
+    const navigate = useNavigate()
+
   return (
       <div className='categories-container'>
-          {Categories.map(({id, imageUrl, title}) => {
+          {Categories.map(({id, imageUrl, title, route}) => {
               return (
-                <div key={id} className="category-container">
+                <div  onClick={() => navigate(route)} key={id} className="category-container">
                     <div className="background-image" style={{
                     backgroundImage:`url(${imageUrl})`
                 }}>

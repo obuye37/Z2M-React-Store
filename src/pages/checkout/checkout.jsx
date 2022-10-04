@@ -1,15 +1,23 @@
-import { useContext } from 'react'
+// import { useContext } from 'react'
+
+import { useDispatch, useSelector } from "react-redux"
 
 import "./checkout.styles.scss"
 import "./checkout-item.styles.scss"
 
-import { CartContext } from "../../utils/context/cartContext"
+// import { CartContext } from "../../utils/context/cartContext"
+import { selectCartItems, selectCartCount, selectCartAmount } from "../../store/cart/cart.selector"
+import { addItemToCart, removeItemFromCart } from "../../store/cart/cart.action"
 
 const Checkout = () => {
-    const { cartItems, totalQuantityCount, removeItemFromCart, addItemToCart, totalCartAmount } = useContext(CartContext)
-    console.log(totalQuantityCount)
-    const removeWithX = true
-    // const total = totalQuantityCount * totalCartAmount
+    // const { cartItems, totalQuantityCount, removeItemFromCart, addItemToCart, totalCartAmount } = useContext(CartContext)
+const dispatch = useDispatch()
+const totalQuantityCount = useSelector(selectCartCount)
+const cartItems = useSelector(selectCartItems)
+const totalCartAmount = useSelector(selectCartAmount)
+
+
+    const removeWithX = true //helper constant for removing a cart item at once
  
     if(totalQuantityCount === 0) {
         return (
@@ -40,11 +48,11 @@ const Checkout = () => {
                                 <td className='image-container'> <img src={imageUrl} alt={`${name}`}/> </td>
                                 <td className='name'>{name}</td>
                                 <td className='quantity'>
-                                    <span className='arrow' onClick={()=>removeItemFromCart(cartItem)}>
+                                    <span className='arrow' onClick={()=> dispatch(removeItemFromCart(cartItems, cartItem))}>
                                         &larr;
-                                    </span> <span className="value">{quantity}</span> <span className='arrow' onClick={()=>addItemToCart(cartItem)}>&rarr;</span></td>
+                                    </span> <span className="value">{quantity}</span> <span className='arrow' onClick={()=>dispatch(addItemToCart(cartItems, cartItem))}>&rarr;</span></td>
                                 <td className='price'>{price}</td>
-                                <td className='remove-button' onClick={()=> removeItemFromCart(cartItem, removeWithX)}>&times;</td>
+                                <td className='remove-button' onClick={()=> dispatch(removeItemFromCart(cartItems, cartItem, removeWithX))}>&times;</td>
                             </tr>
                         )
                     })}

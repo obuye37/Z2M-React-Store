@@ -11,6 +11,8 @@ import App from './App';
 import { persistor, store } from './store/store';
 
 import './index.scss';
+import { Elements } from '@stripe/react-stripe-js';
+import { stripePromise } from './utils/stripe/stripe.utils'
 
 
 ReactDOM.render(
@@ -18,13 +20,9 @@ ReactDOM.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Router>
-          {/* <UserProvider> */}
-            {/* <CategoriesProvider> */}
-              {/* <CartProvider> */}
-                <App />
-              {/* </CartProvider> */}
-            {/* </CategoriesProvider> */}
-          {/* </UserProvider> */}
+          <Elements stripe={stripePromise}>
+            <App />
+          </Elements>
         </Router>
       </PersistGate>
     </Provider>

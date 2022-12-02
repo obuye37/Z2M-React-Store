@@ -9,6 +9,8 @@ import "./checkout-item.styles.scss"
 import { selectCartItems, selectCartCount, selectCartAmount } from "../../store/cart/cart.selector"
 import { addItemToCart, removeItemFromCart } from "../../store/cart/cart.action"
 
+import PaymentForm from "../../components/paymentForm/paymentForm"
+
 const Checkout = () => {
     // const { cartItems, totalQuantityCount, removeItemFromCart, addItemToCart, totalCartAmount } = useContext(CartContext)
 const dispatch = useDispatch()
@@ -64,6 +66,7 @@ const totalCartAmount = useSelector(selectCartAmount)
                 </tfoot>
                 
             </table>
+            <PaymentForm />
         </div>
     )
 }
